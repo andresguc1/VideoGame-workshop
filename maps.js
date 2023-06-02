@@ -47,7 +47,7 @@ maps.push(`
     XX-----XXX
     XXXX-XXXXX
     X--------X
-    XX--XXXX-O
+    XX--XXXX-X
     XX----XXXX
     XXXX-----X
     X----XXXIX
@@ -61,7 +61,7 @@ maps.push(`
     XXXXX---XX
     X-XXXX-XXX
     XX-------X
-    XX-XXXXX-O
+    XX-XXXXX-X
     X----XXX-X
     X--X--XX-I
     XXXXXXXXXX
