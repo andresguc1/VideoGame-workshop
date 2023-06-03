@@ -29,8 +29,8 @@ maps.push(`
 `);
 
 maps.push(`
-    I------XXXX
-    -XXXXX---XX
+    XIX----XXXX
+    ----XX---XX
     XXXXXX-XXXX
     XX-----XXXX
     XXXXX---XXX
