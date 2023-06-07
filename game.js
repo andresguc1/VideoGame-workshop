@@ -4,9 +4,20 @@ const btnUp = document.querySelector('#up');
 const btnLeft = document.querySelector('#left');
 const btnRight = document.querySelector('#right');
 const btnDown = document.querySelector('#down');
+const spanLives = document.querySelector('#lives');
+const spanTime = document.querySelector('#time');
+
 
 let canvasSize;
 let elementsSize;
+let level = 0; 
+let lives = 3;
+
+let timeStart;
+let timePlayer;
+let timeInterval;
+
+
 
 const playerPosition = {
     x: undefined,
@@ -38,17 +49,29 @@ function setCanvasSize() {
 }
 
 function startGame() {
-    console.log({ canvasSize, elementsSize });
+    // console.log({ canvasSize, elementsSize });
 
     game.font = elementsSize + 'px Verdana';
     game.textAlign = 'end';
 
 
-    const map = maps[1];
+    const map = maps[level];
+
+    if (!map) {
+        gameWin();
+        return;
+    }
+
+    if (!timeStart) {
+        timeStart = Date.now();
+        timeInterval = setInterval(showTime, 100);
+    }
+
     const mapRows = map.trim().split('\n');
     const mapRowCols = mapRows.map(row => row.trim().split(''));
-    console.log({ map, mapRows, mapRowCols });
+    // console.log({ map, mapRows, mapRowCols });
 
+    showLives();
 
     enemyPositions = [];
     game.clearRect(0, 0, canvasSize, canvasSize);
@@ -63,7 +86,7 @@ function startGame() {
                 if (!playerPosition.x && !playerPosition.y) {
                     playerPosition.x = posX;
                     playerPosition.y = posY;
-                    console.log({ playerPosition });
+                    // console.log({ playerPosition });
                 }
             } else if (col == 'I') {
                 giftPosition.x = posX;
@@ -88,7 +111,7 @@ function movePlayer() {
     const giftCollision = giftCollisionX && giftCollisionY;
 
     if (giftCollision) {
-        console.log('Next Level!');
+        levelWin();
     }
 
     const enemyCollision = enemyPositions.find(enemy => {
@@ -98,11 +121,57 @@ function movePlayer() {
     });
 
     if (enemyCollision) {
-        console.log('BOOM!!!');
+        levelFail();
     }
 
     game.fillText(emojis['PLAYER'], playerPosition.x, playerPosition.y);
 }
+
+function levelWin() {
+    // console.log('Next level');
+    level++;
+    startGame();
+}
+
+function levelFail() {
+    console.log('BOOM!!!');
+
+
+    lives--;
+    // console.log(lives);
+
+    if (lives <= 0) {
+        level = 0;
+        lives = 3;
+        timeStart = undefined;
+    }
+
+    playerPosition.x = undefined;
+    playerPosition.y = undefined;
+    startGame();
+
+}
+
+function gameWin() {
+    console.log('Congratulations!!! this is End of the Game');
+    clearInterval(timeInterval);
+}
+
+function showLives() {
+    const heartsArray = Array(lives).fill(emojis['HEART']); // [1,2,3]
+
+    spanLives.innerHTML = "";
+    heartsArray.forEach(heart => {
+        const heartSpan = document.createElement('span');
+        heartSpan.textContent = heart;
+        spanLives.appendChild(heartSpan);
+    });
+}
+
+function showTime() {
+    spanTime.innerHTML = Date.now() - timeStart;
+}
+
 
 window.addEventListener('keydown', moveByKeys);
 btnUp.addEventListener('click', moveUp);
@@ -117,42 +186,43 @@ function moveByKeys(event) {
     else if (event.key == 'ArrowDown') moveDown();
 }
 function moveUp() {
-    console.log('Move UP');
+    // console.log('Move UP');
 
     if ((playerPosition.y - elementsSize) < elementsSize) {
-        console.log('OUT');
+        // console.log('OUT');
     } else {
         playerPosition.y -= elementsSize;
         startGame();
     }
 }
 function moveLeft() {
-    console.log('Move LEFT');
+    // console.log('Move LEFT');
 
     if ((playerPosition.x - elementsSize) < elementsSize) {
-        console.log('OUT');
+        // console.log('OUT');
     } else {
         playerPosition.x -= elementsSize;
         startGame();
     }
 }
 function moveRight() {
-    console.log('Move RIGTH');
+    // console.log('Move RIGTH');
 
     if ((playerPosition.x + elementsSize) > canvasSize) {
-        console.log('OUT');
+        // console.log('OUT');
     } else {
         playerPosition.x += elementsSize;
         startGame();
     }
 }
 function moveDown() {
-    console.log('Move Down');
+    // console.log('Move Down');
 
     if ((playerPosition.y + elementsSize) > canvasSize) {
-        console.log('OUT');
+        // console.log('OUT');
     } else {
         playerPosition.y += elementsSize;
         startGame();
     }
 }
+

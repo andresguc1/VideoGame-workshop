@@ -12,6 +12,7 @@ const emojis = {
     'BOMB_COLLISION': '🔥',
     'GAME_OVER': '👎',
     'WIN': '🏆',
+    'HEART': '❤️',
 };
 
 const maps = [];
@@ -29,16 +30,13 @@ maps.push(`
 `);
 
 maps.push(`
-    XIX----XXXX
-    ----XX---XX
-    XXXXXX-XXXX
-    XX-----XXXX
-    XXXXX---XXX
-    XX----XXXXX
-    X--XXXX-XXX
-    X-XXX--XXXX
-    X--------X
-    XXXXXXXXOX
+    OXXXXXXXXXX
+    -XX--XXXXXX
+    ------XXXXX
+    -XXXX-XXXXX
+    -XX---XXXXX
+    -XXX---XXXX
+    XXXXXXXXXX
 `);
 
 maps.push(`
@@ -55,7 +53,7 @@ maps.push(`
 `);
 
 maps.push(`
-    O--XXXXXXX
+    XI-XXXXXXX
     X--------X
     X--XXX-XXX
     XXXXX---XX
@@ -63,12 +61,12 @@ maps.push(`
     XX-------X
     XX-XXXXX-X
     X----XXX-X
-    X--X--XX-I
+    X--X--XXOX
     XXXXXXXXXX
 `);
 
 maps.push(`
-    I----XXXXX
+    XI---XXXXX
     XX---X--XX
     XX-XXXXXXX
     X-----X--X
@@ -81,27 +79,27 @@ maps.push(`
 `);
 
 maps.push(`
-    I-XXXXXXXX
+    XOXXXXXXXX
     X---XXXX-X
     X-X-XX--XX
     X-X------X
     XX--XX-XXX
     X--XXX-X-X
-    XX-XXXX-OX
+    XXXXXX--XX
     X-------XX
     X-XX-XXXXX
-    XXXXXXXXXX
+    XIXXXXXXXX
 `);
 
 maps.push(`
-    O-XXXXXXXX
-    X------XXX
+    X-XXXXXXXX
+    X------IXX
     XX--X-XXXX
     X--X--X--X
     X-XX-XXX-X
     XX-------X
     X--XXXX--X
-    X-XX-XXXXI
+    X-XX-XXXXX
     X---------
-    XXXXXXXXXX
+    XOXXXXXXXX
 `);

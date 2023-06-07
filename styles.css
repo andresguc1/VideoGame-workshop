@@ -1,5 +1,5 @@
 body {
-    background-color: indigo;
+    background-color: black;
     color: #fff;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
@@ -11,13 +11,13 @@ body {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    height: 100vh;
+    height: 90vh;
     width: 100vw;
 }
 
 canvas {
-    border: 4px solid #ff6600;
-    border-radius: 8px;
+    border: 5px solid red;
+    border-radius: 10px;
     background-color: #feff9d;
 }
 
@@ -30,13 +30,14 @@ canvas {
 }
 
 button {
-    background-color: #fdef05;
+    background-color: red;
     border-radius: 8px;
-    border-color: #ff6600;
+    border-color: white;
     font-family: inherit;
     margin: 0;
     padding: 5px 20px;
     width: 100px;
+    color: white
 }
 
 button:not(:last-child) {
@@ -57,9 +58,9 @@ p {
     width: 100%;
 }
 
-@media (max-width: 440px) {
+@media (max-width: 500px) {
     button {
-        margin-top: 25px;
+        margin-top: 20px;
     }
 
     #up,
